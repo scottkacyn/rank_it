@@ -1,4 +1,6 @@
 RankIt::Application.routes.draw do
+  resources :ideas
+
   resources :industries
 
   resources :competitors
