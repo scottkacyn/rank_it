@@ -1,4 +1,6 @@
 RankIt::Application.routes.draw do
+  resources :revenue_models
+
   resources :ideas do
     #->Prelang (voting/acts_as_votable)
     member do

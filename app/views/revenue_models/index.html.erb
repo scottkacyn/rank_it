@@ -1,0 +1,27 @@
+<h1>Listing revenue_models</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @revenue_models.each do |revenue_model| %>
+      <tr>
+        <td><%= revenue_model.title %></td>
+        <td><%= link_to 'Show', revenue_model %></td>
+        <td><%= link_to 'Edit', edit_revenue_model_path(revenue_model) %></td>
+        <td><%= link_to 'Destroy', revenue_model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Revenue model', new_revenue_model_path %>
