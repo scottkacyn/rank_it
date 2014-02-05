@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  notes: MyText
+  industry_id: 
+  revenue_model_id: 
+
+two:
+  title: MyString
+  description: MyText
+  notes: MyText
+  industry_id: 
+  revenue_model_id: 
