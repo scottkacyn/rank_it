@@ -12,5 +12,10 @@
 *= require_tree .
 */
 @import "bootstrap_configuration";
-
 @import "bootstrap";
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
