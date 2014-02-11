@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   #->Prelang (scaffolding:rails/scope_to_user)
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
 
-  before_action :set_idea, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :vote, :unvote]
 
   # GET /ideas
   # GET /ideas.json
@@ -67,7 +67,6 @@ class IdeasController < ApplicationController
     end
   end
 
-
   #->Prelang (voting/acts_as_votable)
   def vote
 
@@ -80,12 +79,19 @@ class IdeasController < ApplicationController
     unless ["like", "bad"].member? direction
       raise "Direction '#{direction}' is not a valid direction for vote method."
     end
-
     @idea.vote voter: current_user, vote: direction
-
-    redirect_to index
+    redirect_to :back
   end
 
+  def unvote
+     direction = params[:direction]
+     if direction == "like"
+        @idea.unliked_by current_user
+     elsif direction == "bad"
+        @idea.undisliked_by current_user
+     end
+     redirect_to :back
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
