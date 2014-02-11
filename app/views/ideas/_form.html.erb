@@ -25,12 +25,12 @@
   </br>
   <div class="field">
     <%= f.label :industry_id %><br>
-    <%= f.text_field :industry_id %>
+    <%= f.select :industry_id, @industries.all.collect {|i| [i.name, i.id]} %>
   </br>
   <div class="field">
-    <%= f.label :revenue_model_id %><br>
-    <%= f.text_field :revenue_model_id %>
-  </br>
+    <%= f.label :revenue_model %><br>
+    <%= f.select :revenue_model_id, @revmods.all.collect {|r| [r.title, r.id]} %>
+  </br></br>
   <div class="actions">
     <%= f.submit %>
   </div>

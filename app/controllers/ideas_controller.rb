@@ -19,6 +19,8 @@ class IdeasController < ApplicationController
   # GET /ideas/new
   def new
     @idea = Idea.new
+    @industries = Industry.all.order("name")
+    @revmods = RevenueModel.all.order("title")
   end
 
   # GET /ideas/1/edit

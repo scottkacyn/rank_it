@@ -17,12 +17,12 @@
 
 <p>
   <strong>Industry:</strong>
-  <%= @idea.industry %>
+  <%= @idea.industry.name %>
 </p>
 
 <p>
   <strong>Revenue model:</strong>
-  <%= @idea.revenue_model %>
+  <%= @idea.revenue_model.title %>
 </p>
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |

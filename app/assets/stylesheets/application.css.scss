@@ -17,5 +17,19 @@
 .wrapper {
     max-width: 1000px;
     margin: 0 auto;
-    text-align: center;
+}
+
+.ideas-list {
+	list-style: none;
+}
+
+.ideas-list li {
+	background: #fff;
+	border-bottom: 1px solid #ddd;
+}
+
+.ideas-list li p {
+	line-height: 34px;
+	padding: 10px;
+	margin: 0;
 }
