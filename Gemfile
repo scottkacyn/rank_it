@@ -48,6 +48,8 @@ gem 'bundler'
 
 gem 'acts_as_votable'
 
+gem 'acts_as_commentable'
+
 gem 'rails_12factor', group: :production
 
 gem 'rails_on_heroku', group: :production
