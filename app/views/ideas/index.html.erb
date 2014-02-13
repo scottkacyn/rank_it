@@ -1,21 +1,33 @@
 <div class="wrapper">
    <% if current_user %>
-       <blockquote>Current ideas</blockquote>
+      <blockquote>Current ideas &nbsp;<%= link_to "Add Idea", new_idea_path, :class => "btn btn-small btn-success" %></blockquote>
        <ul class="ideas-list">
           <% @ideas.each_with_index do |idea, index| %>
              <li>
-             <p>
-             <span class="vote-total"><%= idea.likes.size - idea.dislikes.size %></span>
-             <span class="idea-title"><%= link_to idea.title, idea_path(idea) %></span>
-             <span style="float:right;">
-                <% if current_user.voted_up_on? idea %>
-                   <a href="/ideas/<%= idea.id %>/vote?direction=like" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></a>&nbsp;<a href="/ideas/<%= idea.id %>/vote?direction=bad" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span></a>&nbsp;<a href="/ideas/<%= idea.id %>/unvote?direction=like" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span></a>
-                <% elsif current_user.voted_down_on? idea %>
-                   <a href="/ideas/<%= idea.id %>/vote?direction=like" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span></a>&nbsp;<a href="/ideas/<%= idea.id %>/vote?direction=bad" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-down"></span></a>&nbsp;<a href="/ideas/<%= idea.id %>/unvote?direction=bad" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span></a>
-                <% else %>
-                   <a href="/ideas/<%= idea.id %>/vote?direction=like" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span></a>&nbsp;<a href="/ideas/<%= idea.id %>/vote?direction=bad" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span></a>&nbsp;<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span></a>
-
-                <% end %>
+                <p>
+                   <span class="vote-total"><%= idea.likes.size - idea.dislikes.size %></span>
+                   <span class="idea-title"><%= link_to idea.title, idea_path(idea) %></span>
+                   <span style="float:right;">
+                      <% if current_user.voted_up_on? idea %>
+                         <a href="/ideas/<%= idea.id %>/vote?direction=like" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                         &nbsp;
+                         <a href="/ideas/<%= idea.id %>/unvote?direction=like" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span></a>
+                         &nbsp;
+                         <a href="/ideas/<%= idea.id %>/vote?direction=bad" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                      <% elsif current_user.voted_down_on? idea %>
+                         <a href="/ideas/<%= idea.id %>/vote?direction=like" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                         &nbsp;
+                         <a href="/ideas/<%= idea.id %>/unvote?direction=bad" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span></a>
+                         &nbsp;
+                         <a href="/ideas/<%= idea.id %>/vote?direction=bad" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                      <% else %>
+                         <a href="/ideas/<%= idea.id %>/vote?direction=like" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                         &nbsp;
+                         <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span></a>
+                         &nbsp;
+                         <a href="/ideas/<%= idea.id %>/vote?direction=bad" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                      <% end %>
+                   </span>
                 </p>
              </li>
           <% end %>

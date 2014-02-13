@@ -53,3 +53,100 @@ h1,h2,h3,h4,h5,p,ul,ol,li,div,blockquote,a,span {
    background-color: #ddd;
    background: #ddd;
 }
+
+/* Ideas Show Page */
+
+.idea-column {
+}
+
+.idea-column.left {
+   float: left;
+   width: 60%;
+}
+
+.idea-column.right {
+   float: right;
+   width: 30%;
+}
+
+.idea-section {
+   float: left;
+   width: 100%;
+   padding: 15px;
+   background: #fff;
+   border: 1px solid #ddd;
+   margin: 10px;
+   overflow: hidden;
+}
+
+.idea-section#idea-title {
+   font-size: 120%;
+}
+
+.idea-section#idea-comments {
+   margin-top: -7px;
+}
+
+.idea-section#comment-box {
+   height: 80px;
+   overflow: hidden;
+}
+
+.idea-section#comment-box form {
+   margin: -10px;
+   border: none;
+}
+
+.idea-section#comment-box form textarea {
+   width: 100%;
+   border: none;
+   height: 60px;
+}
+
+.idea-section#comment-box form textarea:active, .idea-section#comment-box form textarea:focus {
+   outline: none;
+}
+
+.idea-item-label {
+   margin-left: 10px;
+   font-size: 90%;
+   color: #ccc;
+   text-transform: uppercase;
+}
+
+.hidden-submit-button {
+   position: absolute;
+   left: -9999px;
+   width: 1px;
+   height: 1px;
+}
+
+.comments-list {
+   list-style: none;
+}
+
+.comments-list.comment {
+   width: 100%;
+}
+
+.comment p.comment-author {
+   padding: 5px;
+   color: #0d4f8b;
+   font-weight: 800;
+   border-bottom: 1px solid #eee;
+}
+
+.comment p.comment-comment {
+   padding: 10px;
+}
+
+/* For Idea Editing Mode */
+
+.idea-section textarea, .idea-section input {
+   width: 100%;
+   border: none;
+}
+
+.idea-section textarea:focus, .idea-section input:focus {
+   outline: none;
+}

@@ -6,6 +6,7 @@ RankIt::Application.routes.draw do
     member do
       get "vote"
       get "unvote"
+      post "comment"
     end
   end
 
@@ -79,6 +80,7 @@ RankIt::Application.routes.draw do
 
     get    "signup"  => "devise/registrations#new",    as: :new_user_registration
     post   "signup"  => "devise/registrations#create", as: :user_registration
+    put    "signup"  => "devise/registrations#update", as: :update_user_registration
     get    "account" => "devise/registrations#edit",   as: :edit_user_registration
   end
 

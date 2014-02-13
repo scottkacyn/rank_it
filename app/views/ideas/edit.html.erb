@@ -1,6 +1,30 @@
-<h1>Editing idea</h1>
+<div class="wrapper">
+   <%= form_for(@idea) do |f| %>
+      <% if @idea.errors.any? %>
+         <div id="error_explanation">
+            <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+            <ul>
+               <%= @idea.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+               <% end %>
+            </ul>
+         </div>
+      <% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @idea %> |
-<%= link_to 'Back', ideas_path %>
+      <div class="idea-column left">
+         <p class="idea-item-label">Idea</p>
+         <div class="idea-section" id="idea-title">
+            <p><%= f.text_field :title %></p>
+         </div>
+         <p class="idea-item-label">Quick Description</p>
+         <div class="idea-section" id="idea-description">
+            <p><%= f.text_area :description %></p>
+         </div>
+         <p class="idea-item-label">Elevator Pitch</p>
+         <div class="idea-section" id="idea-notes">
+            <p><%= f.text_area :notes, :onkeypress => "submitForm(event)" %></p>
+         </div>
+         <%= f.submit "Update", :class => "btn btn-large btn-success" %>
+      </div>
+   <% end %>
+</div>

@@ -54,7 +54,7 @@ gem 'rails_12factor', group: :production
 
 gem 'rails_on_heroku', group: :production
 
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise', '~> 3.1.0.rc'
 
 gem 'omniauth'
 

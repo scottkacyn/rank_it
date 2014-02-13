@@ -1,6 +1,54 @@
 <div class="wrapper">
-   <p id="notice"><%= notice %></p>
-   <blockquote>
-      <p><%= @idea.title %></p>
-   </blockquote>
+   <div class="idea-column left">
+      <p class="idea-item-label">Idea</p>
+      <div class="idea-section" id="idea-title">
+         <span><%= @idea.title %></span>
+         <%= link_to "Edit", edit_idea_path(@idea), :class => "btn btn-primary pull-right" %>
+      </div>
+      <p class="idea-item-label">Quick Description</p>
+      <div class="idea-section" id="idea-description">
+         <p><%= @idea.description %></p>
+      </div>
+      <p class="idea-item-label">Elevator Pitch</p>
+      <div class="idea-section" id="idea-notes">
+         <p><%= @idea.notes %></p>
+      </div>
+      <p class="idea-item-label">Discussion</p>
+      <div class="idea-section" id="comment-box">
+         <form action="/ideas/<%= @idea.id %>/comment" method="POST">
+            <textarea name="comment" id="comment" placeholder="Add a comment to the discussion" onkeypress="return submitForm(event)"></textarea>
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+            <input type="submit" class="hidden-submit-button" tabindex="-1" hidefocus="true"/>
+         </form>
+      </div>
+      <div class="idea-section" id="idea-comments">
+         <ul class="comments-list">
+            <% @idea.comments.each do |comment| %>
+               <li class="comment">
+                  <p class="comment-author">
+                     <%= comment.user.name %>
+                  </p>
+                  <p class="comment-comment">
+                     <%= comment.comment %>
+                  </p>
+               </li>
+            <% end %>
+         </ul>
+      </div>
+   </div>
+   <div class="idea-column right">
+   </div>
 </div>
+
+<script type="text/javascript">
+   function submitForm(e) {
+      e = (e) ? e : event;
+      var target = (e.target) ? e.target : e.srcElement;
+      var charCode = (e.which) ? e.which : e.keyCode;
+      if (charCode == 13) {
+         target.form.submit();
+         return false;
+      }
+      return true;
+   }
+</script>

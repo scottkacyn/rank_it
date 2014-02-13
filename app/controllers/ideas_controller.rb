@@ -3,12 +3,12 @@ class IdeasController < ApplicationController
   #->Prelang (scaffolding:rails/scope_to_user)
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
 
-  before_action :set_idea, only: [:show, :edit, :update, :destroy, :vote, :unvote]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :vote, :unvote, :comment]
 
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    @ideas = Idea.highest_voted
   end
 
   # GET /ideas/1
@@ -25,6 +25,8 @@ class IdeasController < ApplicationController
 
   # GET /ideas/1/edit
   def edit
+    @industries = Industry.all.order("name")
+    @revmods = RevenueModel.all.order("title")
   end
 
   # POST /ideas
@@ -65,6 +67,23 @@ class IdeasController < ApplicationController
       format.html { redirect_to ideas_url }
       format.json { head :no_content }
     end
+  end
+
+  def comment
+     title = params[:title]
+     comment = params[:comment]
+     user_id = current_user.id
+
+     # Make sure we've got a comment to add
+     raise "Comment cannot be blank" unless comment
+
+     new_comment = @idea.comments.create
+     new_comment.title = title
+     new_comment.comment = comment
+     new_comment.user_id = user_id
+     new_comment.save
+
+     redirect_to :back
   end
 
   #->Prelang (voting/acts_as_votable)
