@@ -1,12 +1,16 @@
 <div class="wrapper">
+   <blockquote>Current ideas &nbsp;
    <% if current_user %>
-      <blockquote>Current ideas &nbsp;<%= link_to "Add Idea", new_idea_path, :class => "btn btn-small btn-success" %></blockquote>
-       <ul class="ideas-list">
-          <% @ideas.each_with_index do |idea, index| %>
-             <li>
-                <p>
-                   <span class="vote-total"><%= idea.likes.size - idea.dislikes.size %></span>
-                   <span class="idea-title"><%= link_to idea.title, idea_path(idea) %></span>
+       <%= link_to "Add Idea", new_idea_path, :class => "btn btn-small btn-success" %>
+   <% end %>
+   </blockquote>
+   <ul class="ideas-list">
+      <% @ideas.each_with_index do |idea, index| %>
+         <li>
+            <p>
+               <span class="vote-total"><%= idea.likes.size - idea.dislikes.size %></span>
+               <span class="idea-title"><%= link_to idea.title, idea_path(idea) %></span>
+               <% if current_user %>
                    <span style="float:right;">
                       <% if current_user.voted_up_on? idea %>
                          <a href="/ideas/<%= idea.id %>/vote?direction=like" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></a>
@@ -28,11 +32,9 @@
                          <a href="/ideas/<%= idea.id %>/vote?direction=bad" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span></a>
                       <% end %>
                    </span>
-                </p>
-             </li>
-          <% end %>
-       </ul>
-    <% else %>
-      <p>Sign up or login to view and rate ideas</p>
-    <% end %>
+                <% end %>
+            </p>
+         </li>
+      <% end %>
+   </ul>
 </div>

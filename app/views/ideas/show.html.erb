@@ -16,7 +16,7 @@
       <p class="idea-item-label">Discussion</p>
       <div class="idea-section" id="comment-box">
          <form action="/ideas/<%= @idea.id %>/comment" method="POST">
-            <textarea name="comment" id="comment" placeholder="Add a comment to the discussion" onkeypress="return submitForm(event)"></textarea>
+            <textarea name="comment" id="comment" placeholder="Add a comment to the discussion. (Just press enter when you're finished typing)" onkeypress="return submitForm(event)"></textarea>
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
             <input type="submit" class="hidden-submit-button" tabindex="-1" hidefocus="true"/>
          </form>
